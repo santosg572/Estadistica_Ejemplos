@@ -1,0 +1,261 @@
+npk.aov1 <- aov(yield ~ block + N*P*K, npk)
+summary(npk.aov1)
+coefficients(npk.aov1)
+?var.test
+?t.test
+x <- c(1 ,2 ,3 ,4 ,5 ,6 ,7 ,8)#
+y <- c("F", "F", "F", "F", "F" ,"F", "M", "M")#
+aggregate(x, list(sexo=y),mean)
+?aggregate
+?wilcox.test
+?aov
+?kruskal.test
+?friedman.test
+worms
+?library
+library(help = stats)
+40*120^2
+40*1024^2
+40*1024
+120*1024
+library("ggplot2")#
+ggplot(data = gapminder)
+install.packages(gapminder)
+install.packages('gapminder')
+library("ggplot2")#
+ggplot(data = gapminder)
+library(gapminder)
+library("ggplot2")#
+ggplot(data = gapminder)
+ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +#
+  geom_point()
+242921/1024^2
+242921/1024
+167*1024
+171008/1024
+?read.csv
+a <- gl(2, 4, 8)
+a
+cars
+data(iris)
+iris
+?plot
+?barpllot
+?barplot
+res<- chisq.test(mandatoE, p = c(1/3,1/3,1/3)) #
+print (res)
+res<- chisq.test(c(1,1,1), p = c(1/3,1/3,1/3))
+res
+res<- chisq.test(c(.8,1,1), p = c(1/3,1/3,1/3))
+res
+res$p-value
+res$p.value
+x = c(3,2,3,4,3)
+y = x(c(2,4))
+y = x[c(2,4)]
+y
+15390.9/60
+15390.9/3600
+?plot
+?pdf
+1024*2
+1024*4
+1326597474/1024^2
+install packages("manova.rm")
+install.packages("manova.rm")
+install.packages("MANOVA.RM")
+data(EEG)
+install.packages("mvtnorm")
+install.packages("MANOVA.RM")
+install.packages("multcomp")
+install.packages("mvtnorm")
+install.packages('MANOVA.RM')
+library('MANOVA.RM')
+data(EEG)
+str(EEG)
+help(EEG)
+library(tidyverse)#
+  ggplot(EEG, aes(x=sex, y=resp)) + geom_point(alpha=0.5) + facet_grid(region+feature~diagnosis) +#
+     stat_summary(fun.y = mean, fun.ymin = min, fun.ymax = max, colour = "red")
+install.packages('tidyverse'')
+install.packages('tidyverse')
+library(tidyverse)#
+  ggplot(EEG, aes(x=sex, y=resp)) + geom_point(alpha=0.5) + facet_grid(region+feature~diagnosis) +#
+     stat_summary(fun.y = mean, fun.ymin = min, fun.ymax = max, colour = "red")
+library()
+data(liver)
+?liver
+??liver
+data(colu)
+??colu
+? mctp
+install.packages('mctp')
+data(EEG)
+library(ariExtra)
+install.packages('ariExtra')
+library(ariExtra)
+help(ariExtra)
+?ariExtra
+library(ariExtra)
+help(ariExtra)
+??ariExtra
+?ariExtra
+x = seq(.1, 1, .01)
+y = 8*x*(x-1)^2 + 2*x
+plot(x,y)
+plot(x,y, type='l', ylim=c(0,3))
+library(MANOVA.RM)
+o2cons
+summary(o2cons)
+char(o2cons)
+str(o2cons)
+?o2cons
+254/60
+citation()
+?lme
+library(nlme)
+?lme
+.4*.4
+.2*.2
+450/24
+96*13.05
+96/6
+14500*36
+14500*36+130
+install.packages('nlme')
+lme
+?lme
+lme()
+61737704 / 1024^2
+60*1024^2
+library(devtools)
+install_github("dami82/easyPubMed")
+my_query <- 'magnetic resonance'
+my_entrez_id <- get_pubmed_ids(my_query)
+??get_pubmed_ids
+library(esyPubmed)
+library("dami82/easyPubMed")
+library(dami82/easyPubMed)
+install_packages("easyPubMed")
+install.packages("easyPubMed")
+library(esyPubmed)
+library('esyPubmed')
+library(easyPubmed)
+library(easyPubMed)
+my_entrez_id <- get_pubmed_ids(my_query)
+my_abstracts_txt <- fetch_pubmed_data(my_entrez_id, format = "abstract")
+my_abstracts_txt
+my_abstracts
+head(my_abstracts_txt)
+head(my_abstracts_txt, 100)
+my_query <- "magnetic resonance"
+my_field <- "[Title]"
+res0 <- get_pubmed_ids(my_query)
+print(as.numeric(res0$Count))
+res <- get_pubmed_ids_by_fulltitle(my_query, field = my_field)
+print(as.numeric(res$Count))
+res
+my_query
+res0
+source('p651.R')
+source('p651.R')
+source('p651.R')
+z
+source('p651.R')
+ls
+dir()
+source('p661.R')
+source('p661.R')
+source('p661.R')
+source('p661.R')
+source('p751.R')
+source('p751.R')
+p0
+source('p751.R')
+p0
+p
+source('p751.R')
+source('p751.R')
+source('p12_3_1.R')
+source('p12_3_1.R')
+source('p12_3_1.R')
+x = seq(0,200,25)
+x
+x = seq(0,175,25)
+x
+source('p12_3_1.R')
+x
+x = seq(0,175,25/2)
+x
+x = seq(0,175,25/2)
+x = seq(0,87.5,25/2)
+x
+x = seq(0,87.5,25/2) + 115
+x
+x = seq(0,87.5,25/2) + 100
+x
+x = seq(0,87.5,25/2) + 100+25/2
+x
+x = seq(25/2,87.5,25)
+x
+x = seq(25/2,200,25)
+x
+x = seq(25/2,200,25) + 100
+x
+source('p12_3_1.R')
+source('p12_3_1.R')
+source('p12_3_1.R')
+f
+x
+source('p12_3_1.R')
+13,9,8,4
+x = seq(5/2,100,5)
+x
+x = seq(5/2,20,5)
+x
+x = seq(5/2,25,5)
+x
+x = seq(5/2,25,5) + 50
+x
+source('pp.R')
+f
+x
+x*f
+sum(x*f)
+s1
+source('pp.R')
+source('p12_3_1.R')
+source('p12_3_1.R')
+source('p12_3_1.R')
+source('p12_3_1.R')
+source('p12_3_1.R')
+source('p12_3_1.R')
+source('p12_3_1.R')
+source('p12_3_1.R')
+source('p12_3_1.R')
+o
+?dnorm
+source('p12_3_1.R')
+source('p12_3_1.R')
+x
+source('p12_3_1.R')
+source('p12_3_1.R')
+x
+x-12.5
+(x-12.5,300)
+c(x-12.5,300)
+source('p12_3_1.R')
+0.037274695 - 0.008461759
+0.037274695 - 0.008461759
+source('p12_3_1.R')
+source('p12_3_1.R')
+source('p12_3_1.R')
+o[2:9]
+source('p12_3_1.R')
+source('p12_3_1.R')
+source('p12_3_1.R')
+source('p12_3_1.R')
+source('p12_3_1.R')
+source('p12_3_1.R')
+source('p12_3_1.R')
+source('p12_3_1.R')
