@@ -1,0 +1,691 @@
+fa
+x
+b=x
+x = (a+b)/2
+x
+fx = x^3-2*x+1
+fx
+fx*fa
+a = -2
+b = 3
+fa = a^3-2*a+1
+fb = b^3-2*b+1
+x = (a+b)/2
+fx = x^3-2*x+1
+fx*fa
+b = x
+fb = b^3-2*b+1
+x=-1.6
+fx = x^3-2*x+1
+fx
+x = seq(-2,3,.01)
+fx = x.^3-2*x+1
+fx = x^3-2*x+1
+plot(x,fx)
+plot(x,fx, type='l')
+points(1.6,fx,)
+text(1.6,fx,'*')
+x=-1.6
+fx = x^3-2*x+1
+text(x,fx,'*')
+?topTags
+cpm
+?cpm
+x = 1.5
+x^3-2*x-3
+(1.5+2)/2
+citation()
+?NBPSeq
+??NBPSeq
+?aov
+x = c(1 2 3, 4,6, 1, 3 4)
+x = c(1, 2, 3, 4,6, 1, 3, 4)
+y = c(1,1,1,2,2,3,3,3)
+res = aov(x~factor(y))
+summary(res)
+boxplot(x~factor(y))
+?mean
+pnorm(-2.12)
+pnorm(2.12)
+pnorm(-1.58)
+pt(-1.58)
+pt(-1.58,14)
+pt(1.58,14)
+pt(-1.58,14)
+pt(-1.58,13)
+pt(-1.58,13)*2
+pnorm(4.23)
+1-pnorm(4.23)
+?t.test
+x = seq(-4,4,.1)
+y = x^4-4*x^2-x^3+4*x
+plot(x,y)
+plot(x,y, type='l')
+x = seq(-3,3,.1)
+y = x^4-4*x^2-x^3+4*x
+plot(x,y, type='l')
+x = seq(-2.5,2.5,.1)
+y = x^4-4*x^2-x^3+4*x
+plot(x,y, type='l')
+points(c(-3,3), c(0,0), type='l')
+x = seq(-pi, 3*pi,.1)
+y = cos(x)
+plot(x,y)
+plot(x,y, type='l')
+y = cos(x)*2-3
+plot(x,y, type='l')
+x = seq(0, 5,.1)
+y = x^4-10*x^3+35*x^2-46*x+8
+plot()
+plot(x,y, type='l')
+x = seq(0, 5,.1)
+y = x^4-10*x^3+35*x^2-46*x+8
+plot(x,y, type='l')
+points(c(0,5), c(0,0))
+points(c(0,5), c(0,0), type='l')
+y = x^4-10*x^3+35*x^2-46*x+24
+plot(x,y, type='l')
+points(c(0,5), c(0,0), type='l')
+y = x^4-10*x^3+35*x^2-46*x+24
+y = x^4-10*x^3+35*x^2-50*x+24
+plot(x,y, type='l')
+points(c(0,5), c(0,0), type='l')
+library('MVA')
+demo("Ch-MVA")
+hypo
+hypo[1:2,]
+plot(popul ~ manu, data = USairpollution,+ xlab = mlab, ylab = plab)
+hypo[1:2,]
+plot(popul ~ manu, data = USairpollution,xlab = mlab, ylab = plab)
+mlab <- "Manufacturing enterprises with 20 or more workers"
+plab <- "Population size (1970 census) in thousands"
+plot(popul ~ manu, data = USairpollution,xlab = mlab, ylab = plab)
+library(car)
+some(iris)
+scatterplotMatrix(~ Sepal.Length + Sepal.Width + Petal.Length+ + Petal.Width | Species,+ data=iris, smooth=FALSE, reg.line=FALSE, ellipse=TRUE,+ by.groups=TRUE, diagonal="none")
+scatterplotMatrix(~ Sepal.Length + Sepal.Width + Petal.Length + Petal.Width | Species, data=iris, smooth=FALSE, reg.line=FALSE, ellipse=TRUE, by.groups=TRUE, diagonal="none")
+iris
+mod.iris <- lm(cbind(Sepal.Length, Sepal.Width, Petal.Length, Petal.Width) ~ Species, data=iris)
+class(mod.iris)
+mod.iris
+summary(mod.iris)
+(manova.iris <- Anova(mod.iris))
+edit()
+data.entry()
+?edit()
+?data.entry
+?plot
+?require
+?cos
+?save
+?cos
+x = runif(20)
+x
+x=c(1 2)
+?print
+print(x)
+print(x, digits=2)
+print(x, digits=2, na.print=',')
+print(x, digits=2)
+x = runif(30)
+x
+x = 20*runif(30)
+print(x, digits=2)
+x = 20*rnorm(30)
+x
+print(x, digits=2)
+citation()
+535.8052/60
+0.0165+.0165216
+x = c(20, 40, 30)
+barplot(x)
+?barplot
+x = c(20, 40, 30, density=c(10,20,30)))
+x = c(20, 40, 30, density=c(10,20,30))
+barplot(x)
+x = c(20, 40, 30)
+barplot(x, density=c(10,20,30))
+x = c(42.50, 19.10, 32.67, 18.88, 25.10, 24.50, 6.60, 17.10, 16.12, 11.30, 15.02, 10.80, 6.10, 10.48, 23.54, 17.37, 10.33, 15.91, 19.12, 16.05, 6.65, 7.52, 13.20, 19.76, 18.25, 13.05, 13.32)#
+#
+plot(x)
+x = c(42.50, 19.10, 32.67, 18.88, 25.10, 24.50, 6.60, 17.10, 16.12, 11.30, 15.02, 10.80, 6.10, 10.48, 23.54, 17.37, 10.33, 15.91, 19.12, 16.05, 6.65, 7.52, 13.20, 19.76, 18.25, 13.05, 13.32)#
+#
+plot(x)#
+#
+n = length(x)#
+media = mean(x)#
+mediana = median(x)#
+varianza = var(x)#
+sd1 = sd(x)#
+err_est = sd1/sqrt(n)#
+m1 = min(x)#
+m2 = max(x)#
+rango = range(x)
+n
+media
+mediana
+x = c(42.50, 19.10, 32.67, 18.88, 25.10, 24.50, 6.60, 17.10, 16.12, 10.48, 11.30, 15.02, 10.80, 6.10, 10.48, 23.54, 17.37, 10.33, 15.91, 19.12, 16.05, 6.65, 7.52, 13.20, 19.76, 18.25, 13.05, 13.32)#
+#
+plot(x)#
+#
+n = length(x)#
+media = mean(x)#
+mediana = median(x)#
+varianza = var(x)#
+sd1 = sd(x)#
+err_est = sd1/sqrt(n)#
+m1 = min(x)#
+m2 = max(x)#
+rango = range(x)
+n
+x = c(42.50, 19.10, 32.67, 18.88, 25.10, 24.50, 6.60, 17.10, 16.12, 10.48, 11.30, 15.02, 10.80, 8.46, 6.10, 10.48, 23.54, 17.37, 10.33, 15.91, 19.12, 16.05, 6.65, 7.52, 13.20, 19.76, 18.25, 13.05, 13.32)#
+#
+plot(x)#
+#
+n = length(x)#
+media = mean(x)#
+mediana = median(x)#
+varianza = var(x)#
+sd1 = sd(x)#
+err_est = sd1/sqrt(n)#
+m1 = min(x)#
+m2 = max(x)#
+rango = range(x)
+n
+media
+mediana
+varianza
+sd1
+err_est
+m1
+m2
+rango
+rango[2]-rango[1]
+?median
+x = c(42.50, 19.10, 32.67, 18.88, 25.10, 24.50, 6.60, 17.10, 16.12, 10.48, 11.30, 15.02, 10.80, 8.46, 6.10, 10.48, 23.54, 17.37, 10.33, 15.91, 19.12, 16.05, 6.65, 7.52, 13.20, 19.76, 18.25, 13.05, 13.32)#
+#
+plot(x)#
+#
+n = length(x)#
+media = mean(x)#
+mediana = median(x)#
+varianza = var(x)#
+sd1 = sd(x)#
+err_est = sd1/sqrt(n)#
+m1 = min(x)#
+m2 = max(x)#
+rango = range(x)#
+IRQ(x)
+x = c(42.50, 19.10, 32.67, 18.88, 25.10, 24.50, 6.60, 17.10, 16.12, 10.48, 11.30, 15.02, 10.80, 8.46, 6.10, 10.48, 23.54, 17.37, 10.33, 15.91, 19.12, 16.05, 6.65, 7.52, 13.20, 19.76, 18.25, 13.05, 13.32)#
+#
+plot(x)#
+#
+n = length(x)#
+media = mean(x)#
+mediana = median(x)#
+varianza = var(x)#
+sd1 = sd(x)#
+err_est = sd1/sqrt(n)#
+m1 = min(x)#
+m2 = max(x)#
+rango = range(x)#
+i = IQR(x)
+i
+x = c(42.50, 19.10, 32.67, 18.88, 25.10, 24.50, 6.60, 17.10, 16.12, 10.48, 11.30, 15.02, 10.80, 8.46, 6.10, 10.48, 23.54, 17.37, 10.33, 15.91, 19.12, 16.05, 6.65, 7.52, 13.20, 19.76, 18.25, 13.05, 13.32)#
+#
+plot(x)#
+#
+n = length(x)#
+media = mean(x)#
+mediana = median(x)#
+varianza = var(x)#
+sd1 = sd(x)#
+err_est = sd1/sqrt(n)#
+m1 = min(x)#
+m2 = max(x)#
+rango = range(x)#
+i = IQR(x)#
+q1 = quantile(x,.25)
+q1
+x = c(42.50, 19.10, 32.67, 18.88, 25.10, 24.50, 6.60, 17.10, 16.12, 10.48, 11.30, 15.02, 10.80, 8.46, 6.10, 10.48, 23.54, 17.37, 10.33, 15.91, 19.12, 16.05, 6.65, 7.52, 13.20, 19.76, 18.25, 13.05, 13.32)#
+#
+plot(x)#
+#
+n = length(x)#
+media = mean(x)#
+mediana = median(x)#
+varianza = var(x)#
+sd1 = sd(x)#
+err_est = sd1/sqrt(n)#
+m1 = min(x)#
+m2 = max(x)#
+rango = range(x)#
+i = IQR(x)#
+q1 = quantile(x,.25)#
+q2 = quantile(x,.5)#
+q3 = quantile(x,.75)
+q3
+x = c(42.50, 19.10, 32.67, 18.88, 25.10, 24.50, 6.60, 17.10, 16.12, 10.48, 11.30, 15.02, 10.80, 8.46, 6.10, 10.48, 23.54, 17.37, 10.33, 15.91, 19.12, 16.05, 6.65, 7.52, 13.20, 19.76, 18.25, 13.05, 13.32)#
+#
+plot(x)#
+#
+n = length(x)#
+media = mean(x)#
+mediana = median(x)#
+varianza = var(x)#
+sd1 = sd(x)#
+err_est = sd1/sqrt(n)#
+m1 = min(x)#
+m2 = max(x)#
+rango = range(x)#
+i = IQR(x)#
+q1 = quantile(x,.25)#
+q2 = quantile(x,.5)#
+q3 = quantile(x,.75)#
+boxplot(x)
+q1
+q3
+?boxplot
+?median
+_split
+?split
+x = 1:20
+split(x,)
+split(1:10, 1:2)
+cut(1:10, 5)
+cut(1:10, c(5,5))
+cut(1:10, c(5,8))
+cut(1:10, c(0,5,8, 10))
+f = cut(1:10, c(0,5,8, 10))
+split(x,f)
+f = cut(1:10, c(0,5,8, 10))
+f
+table(x)
+table(f)
+plot(f)
+f
+tf=table(f)
+tf
+typeof(tf)
+object(tf)
+?typeof
+?mode
+tt + = read.csv('EXA_C09_S03_01.csv', header=T)
+tt = read.csv('EXA_C09_S03_01.csv', header=T)
+di()
+dir()
+dir()
+tt = read.csv('EXA_C09_S03_01.csv', header=T)
+tt
+tt = read.csv('EXA_C09_S03_01.csv', header=T)#
+attch(tt)
+tt = read.csv('EXA_C09_S03_01.csv', header=T)#
+attach(tt)
+X
+tt = read.csv('EXA_C09_S03_01.csv', header=T)#
+attach(tt)#
+#
+res = lm(y~x)#
+summary(res)
+tt = read.csv('EXA_C09_S03_01.csv', header=T)#
+attach(tt)#
+#
+res = lm(Y~X)#
+summary(res)
+tt = read.csv('EXA_C09_S03_01.csv', header=T)#
+attach(tt)#
+#
+res = lm(Y~X)#
+summary(res)#
+#
+ym = mean(Y)#
+#
+SCT = sum((Y-ym)^2)#
+print(SCT)
+tt = read.csv('EXA_C09_S03_01.csv', header=T)#
+attach(tt)#
+#
+res = lm(Y~X)#
+#
+print(res)#
+#
+summary(res)#
+#
+ym = mean(Y)#
+#
+SCT = sum((Y-ym)^2)#
+print(SCT)#
+#
+SCR
+names(res)
+res$coefficients
+tt = read.csv('EXA_C09_S03_01.csv', header=T)#
+attach(tt)#
+#
+res = lm(Y~X)#
+#
+print(res)#
+#
+summary(res)#
+#
+ym = mean(Y)#
+#
+SCT = sum((Y-ym)^2)#
+print(SCT)#
+#
+coe = res$coefficients#
+#
+print(coe)
+names(coe)
+coe[1]
+tt = read.csv('EXA_C09_S03_01.csv', header=T)#
+attach(tt)#
+#
+res = lm(Y~X)#
+#
+print(res)#
+#
+summary(res)#
+#
+ym = mean(Y)#
+#
+SCT = sum((Y-ym)^2)#
+print(SCT)#
+#
+coe = res$coefficients#
+#
+y0 = as.double(coe[1])#
+print(y0)
+tt = read.csv('EXA_C09_S03_01.csv', header=T)#
+attach(tt)#
+#
+res = lm(Y~X)#
+#
+print(res)#
+#
+summary(res)#
+#
+ym = mean(Y)#
+#
+SCT = sum((Y-ym)^2)#
+print(SCT)#
+#
+coe = res$coefficients#
+#
+y0 = as.double(coe[1])#
+print(y0)#
+m = as.double(coe[2])#
+print(m)
+tt = read.csv('EXA_C09_S03_01.csv', header=T)#
+attach(tt)#
+#
+res = lm(Y~X)#
+#
+print(res)#
+#
+summary(res)#
+#
+ym = mean(Y)#
+#
+SCT = sum((Y-ym)^2)#
+print(SCT)#
+#
+coe = res$coefficients#
+#
+y0 = as.double(coe[1])#
+print(y0)#
+m = as.double(coe[2])#
+print(m)#
+#
+yg = m*X+y0#
+#
+SCR = sum((yg - ym)^2)#
+#
+print(SCR)
+tt = read.csv('EXA_C09_S03_01.csv', header=T)#
+attach(tt)#
+#
+res = lm(Y~X)#
+#
+print(res)#
+#
+summary(res)#
+#
+ym = mean(Y)#
+#
+SCT = sum((Y-ym)^2)#
+print(SCT)#
+#
+coe = res$coefficients#
+#
+y0 = as.double(coe[1])#
+print(y0)#
+m = as.double(coe[2])#
+print(m)#
+#
+yg = m*X+y0#
+#
+SCR = sum((yg - ym)^2)#
+#
+print(SCR)#
+#
+r2 = SCR/SCT#
+#
+print(r2)
+tt = read.csv('EXA_C09_S03_01.csv', header=T)#
+attach(tt)#
+#
+res = lm(Y~X)#
+#
+print(res)#
+#
+summary(res)#
+#
+ym = mean(Y)#
+#
+SCT = sum((Y-ym)^2)#
+print(SCT)#
+#
+coe = res$coefficients#
+#
+y0 = as.double(coe[1])#
+print(y0)#
+m = as.double(coe[2])#
+print(m)#
+#
+yg = m*X+y0#
+#
+SCR = sum((yg - ym)^2)#
+#
+print(SCR)#
+#
+r2 = SCR/SCT#
+#
+print(r2)#
+#
+SCres = sum((Y-yg)^2)#
+#
+print(SCres)
+tt = read.csv('EXA_C09_S03_01.csv', header=T)#
+attach(tt)#
+#
+res = lm(Y~X)#
+#
+print(res)#
+#
+summary(res)#
+#
+ym = mean(Y)#
+#
+SCT = sum((Y-ym)^2)#
+print(SCT)#
+#
+coe = res$coefficients#
+#
+y0 = as.double(coe[1])#
+print(y0)#
+m = as.double(coe[2])#
+print(m)#
+#
+yg = m*X+y0#
+#
+SCR = sum((yg - ym)^2)#
+#
+print(SCR)#
+#
+r2 = SCR/SCT#
+#
+print(r2)#
+#
+SCres = sum((Y-yg)^2)#
+#
+print(SCres)#
+CMR = SCR/1#
+CMR = SCres / (length(Y)-2)#
+#
+RV = CMR / CMR
+tt = read.csv('EXA_C09_S03_01.csv', header=T)#
+attach(tt)#
+#
+res = lm(Y~X)#
+#
+print(res)#
+#
+summary(res)#
+#
+ym = mean(Y)#
+#
+SCT = sum((Y-ym)^2)#
+print(SCT)#
+#
+coe = res$coefficients#
+#
+y0 = as.double(coe[1])#
+print(y0)#
+m = as.double(coe[2])#
+print(m)#
+#
+yg = m*X+y0#
+#
+SCR = sum((yg - ym)^2)#
+#
+print(SCR)#
+#
+r2 = SCR/SCT#
+#
+print(r2)#
+#
+SCres = sum((Y-yg)^2)#
+#
+print(SCres)#
+CMR = SCR/1#
+CMR = SCres / (length(Y)-2)#
+#
+RV = CMR / CMR#
+#
+print(RV)
+tt = read.csv('EXA_C09_S03_01.csv', header=T)#
+attach(tt)#
+#
+res = lm(Y~X)#
+#
+print(res)#
+#
+summary(res)#
+#
+ym = mean(Y)#
+#
+SCT = sum((Y-ym)^2)#
+print(SCT)#
+#
+coe = res$coefficients#
+#
+y0 = as.double(coe[1])#
+print(y0)#
+m = as.double(coe[2])#
+print(m)#
+#
+yg = m*X+y0#
+#
+SCR = sum((yg - ym)^2)#
+#
+print(SCR)#
+#
+r2 = SCR/SCT#
+#
+print(r2)#
+#
+SCres = sum((Y-yg)^2)#
+#
+print(SCres)#
+CMR = SCR/1#
+CMres = SCres / (length(Y)-2)#
+#
+RV = CMR / CMres#
+#
+print(RV)
+?f.test
+?qf
+tt = read.csv('EXA_C09_S03_01.csv', header=T)#
+attach(tt)#
+#
+res = lm(Y~X)#
+#
+print(res)#
+#
+summary(res)#
+#
+ym = mean(Y)#
+#
+SCT = sum((Y-ym)^2)#
+print(SCT)#
+#
+coe = res$coefficients#
+#
+y0 = as.double(coe[1])#
+print(y0)#
+m = as.double(coe[2])#
+print(m)#
+#
+yg = m*X+y0#
+#
+SCR = sum((yg - ym)^2)#
+#
+print(SCR)#
+#
+r2 = SCR/SCT#
+#
+print(r2)#
+#
+SCres = sum((Y-yg)^2)#
+#
+print(SCres)#
+CMR = SCR/1#
+CMres = SCres / (length(Y)-2)#
+#
+RV = CMR / CMres#
+#
+print(RV)#
+#
+z = qf(.05, 1, length(Y)-2)#
+#
+print(z)
+source('p1.R')
+source('p1.R')
+source('p1.R')
+source('p1.R')
+source('p1.R')
+source('p1.R')
+source('p1.R')
+source('p1.R')
+source('p1.R')
+source('p1.R')
+source('p1.R')
+pf(8.25, 1, 107)
+pf(8.25, 107, 1)
+1-.995
+pf(3.94, 107, 1)
+pf(3.94, 1, 107)
+pf(3.94, 1, 107)
+source('p1.R')
+source('p1.R')

@@ -1,0 +1,558 @@
+q
+p = pnorm(0, mean=mu1, sd=sd1 )
+p
+p = pnorm(49, mean=mu1, sd=sd1 )
+p
+x = (49-55)/7
+p = pnorm(x)
+p
+log10(189)
+log(189)
+log10(189)*3.322+1
+x = round(rnorm(25, mean=55, sd=7))
+hist(x)
+x = round(runif(50, min=30, max=70))
+hist(x)
+x
+x = round(runif(20, min=30, max=70))
+x
+?quartile
+??quartile
+quantile(x)
+n = length(x)
+Q1 = (n+1)/4
+Q1
+Q2 = (n+1)/2
+Q2
+n
+y = sort(x)
+(y[10]+y[11])/2
+Q1
+(y[5]+y[6]])/2
+(y[5]+y[6])/2
+n
+y[5] + (y[6] - y[5])*.25
+y[5] + (y[6] - y[5])*.75
+x
+n
+(n+1)/4
+y
+Q1
+(y[10]+y[11])/2
+(y[5]+y[6])/2
+y[5]+(y[6]-y[5])*.25
+quartile(x)
+quantile(x)
+quantile(y)
+y
+.25*20
+? quantile
+Q1
+x = round(runif(21, min=30, max=70))
+quantile(x)
+n = length(x)
+Q1 = (n+1)/4
+Q1
+y = sort(x)
+(y[5]+y[6])/2
+.5 * 21
+(y[10]+y[11])/2
+y[10]
+y[11]
+.5*21
+x
+p = min(x):max(x)
+hist(x,p)
+x1 = min(x)
+x2 = max(x)
+p = seq(x1-.5, x2 + .5, 1)
+hist(x,p)
+h = hist(x,p)
+h
+m2=c()#
+#
+for (i in 1:100) {#
+#
+        m2=rbind(muestras,sample(tarea4$AGE,10,replace = F))#
+#
+    }#
+#
+m2=apply(m2,1,mean)#
+#
+sd2m=sd(m2)#
+#
+sd2m#
+#
+hist(m2,main = "100muestras",xlab = "promedio",ylab = "Frc")#
+#
+h=abline(l=sd2m,col="blue",lty=2)#
+#
+h#
+#
+mpoblacion=mean(tarea4$AGE)#
+#
+desviacionpob=sd(m2)#
+#
+mmedias=mean(m2)#
+#
+desviacionmedias=sd(m2)#
+cat("mPoblacion:",mpoblacion,"\n")#
+#
+cat("desviación estandar de las medias",desviacionpob,"\n")    #
+#
+cat("media de las medias de las muestras:",mmedias,"\n")#
+#
+cat("sdmediasdemuestras:",desviacionmedias,"\n")#
+comparacion=c(mpoblacion,desviacionpob,desviacionmedias,mmedias)#
+#
+barplot(comparacion,main = "comparación de medias",ylab = "valores", col = "green")
+rm(list=ls())#
+suma <- 0#
+for (i in 1:99) {#
+#
+  suma <- suma + i / (i + (i+1))#
+#
+}#
+suma <- suma + 1#
+print(suma)
+rm(list=ls())#
+# Definir el valor de x - No se indica que valor debe tener x en la tarea#
+#
+x <- 3#
+sumatoria <- 0#
+factorial <- function(n) {#
+#
+  if (n == 0) {#
+#
+    return(1)#
+#
+  } else {#
+#
+    return(n * factorial(n - 1))#
+#
+  }#
+#
+}#
+for (n in 0:100) {#
+#
+  termino <- (-x)^n / factorial(n)#
+#
+  sumatoria <- sumatoria + termino#
+#
+}#
+print(sumatoria)#
+# Resultado de ejercicio 4 = 0.04978707
+nombre<-paste0("Juan", 1:20,"")#
+#
+peso<-round(rnorm(20,mean=55,sd=7))#
+#
+edad<-round(runif(20, min = 30, max = 60))#
+#
+ns<-1:3#
+#
+nivel_social<-sample(c(1,2,3),20,replace = TRUE)#
+#
+fumadores<-sample(c(1,2),20,prob = c(0.3,0.7),replace=TRUE)#
+#
+#Examen_1er_R_sep1223_Castilla#
+examen_data<-data.frame(nombre,peso,edad,nivel_social,fumadores)#
+write.csv(examen_data,file='examen_data.csv',row.names = FALSE)
+ls
+dir()
+a=1;b=2;c=3;m=1/2;n=1/3;p=1/4#
+#inciso a)#
+#
+(m^b)*(n^c)*(p^a)#
+#
+#inciso b)#
+#
+(5/6)*(a^(b-1))*(m^(c-2))#
+#
+#inciso c)#
+#
+(3*(((64*(b^3)*(c^6)))^(1/3)))/(2*m)
+fum = .14
+n = 10
+?pnorm
+?pbinom
+pbinom(4, 10, .14)
+pbinom(4, 10, .14) - pbinom(3, 10, .14)
+pbinom(5, 25, .1)
+1-pbinom(5, 25, .1)
+pbinom(9, 25, .1) - pbinom(5, 25, .1)
+pbinom(4, 25, .1) - pbinom(1, 25, .1)
+pnorm(2)
+pnorm(2.55)-pnorm(-2.55)
+1-pnorm(2.71)
+pnorm(2.45)-pnorm(.84)
+?shapiro.test
+x = round(rnorm(100, mean = 55, sd = 10))
+x
+shapiro.test(x)
+x = round(rnorm(100, mean = 55, sd = 10))
+shapiro.test(x)
+x = round(rnorm(100, mean = 55, sd = 10))
+shapiro.test(x)
+x
+y = round(runif(100, min = 30, max = 60))
+shapiro.test(y)
+y = round(runif(100, min = 30, max = 60))
+shapiro.test(y)
+y
+1-pnorm(1.10)
+15/sqrt(50)
+pnorm(2.36)-pnorm(-2.36)
+1 - pnorm(1.23)
+dir(mtcars)
+str(mtcars)
+?mtcars
+str(mtcars)
+library(ggplot2)#
+#
+ggplot(mpg, aes(displ, hwy, colour = class)) + #
+  geom_point()
+dir(mpg)
+str(mpg)
+?mpg
+aa <- filter(gapminder, continent == "Europe") #
+p = ggplot(data = aa, aes(y = lifeExp, x = year )) +#
+  geom_point()#
+p
+# Load ggplot2#
+library(ggplot2)#
+#
+# Create data#
+data <- data.frame(#
+  name=c("A","B","C","D","E") ,  #
+  value=c(3,12,5,18,45)#
+  )#
+#
+# Barplot#
+ggplot(data, aes(x=name, y=value)) + #
+  geom_bar(stat = "identity")
+# Load ggplot2#
+library(ggplot2)#
+#
+# Create data#
+data <- data.frame(#
+  name=c("A","B","C","D","E") ,  #
+  value=c(3,12,5,18,45)#
+  )#
+#
+# Barplot#
+ggplot(data, aes(x=name, y=value)) + #
+  geom_bar(stat = "identity") +#
+  coord_flip()
+# Load ggplot2#
+library(ggplot2)#
+#
+# Create data#
+data <- data.frame(#
+  name=c("A","B","C","D","E") ,  #
+  value=c(3,12,5,18,45)#
+  )#
+#
+# Barplot#
+ggplot(data, aes(x=name, y=value)) + #
+  geom_bar(stat = "identity", width=0.2)
+# library#
+library(ggplot2)#
+# The iris dataset is provided natively by R#
+#head(iris)#
+# basic scatterplot#
+ggplot(iris, aes(x=Sepal.Length, y=Sepal.Width)) + #
+    geom_point()
+library(ggplot2)#
+library(hrbrthemes)#
+#
+# mtcars dataset is natively available in R#
+# head(mtcars)#
+# A basic scatterplot with color depending on Species#
+ggplot(iris, aes(x=Sepal.Length, y=Sepal.Width, color=Species)) + #
+    geom_point(size=6) +#
+    theme_ipsum()
+ggplot(iris, aes(x=Sepal.Length, y=Sepal.Width, color=Species)) + #
+    geom_point(size=6) +#
+    theme_ipsum()
+ggplot(iris, aes(x=Sepal.Length, y=Sepal.Width, color=Species)) + #
+    geom_point(size=6)
+ggplot(iris, aes(x=Sepal.Length, y=Sepal.Width)) + #
+    geom_point()
+ggplot(iris, aes(x=Sepal.Length, y=Sepal.Width, alpha=Species)) + #
+    geom_point(size=6, color="#69b3a2")
+ggplot(iris, aes(x=Sepal.Length, y=Sepal.Width, shape=Species, alpha=Species, size=Species, color=Species)) + #
+    geom_point()
+x = 1:10#
+y = 1+ .2*x#
+datos <- data.frame(x,y)#
+#
+ggplot(datos, aes(x, y)) + geom_point()
+x = 1:10#
+y = 1+ .2*x + runif(10, min=-3, max=2)#
+datos <- data.frame(x,y)#
+#
+ggplot(datos, aes(x, y)) + geom_point()
+x = 1:10#
+y = 1+ .2*x + runif(10, min=-1, max=.5)#
+datos <- data.frame(x,y)#
+#
+ggplot(datos, aes(x, y)) + geom_point()
+ggplot(datos, aes(x, y)) + geom_point()+ geom_line()
+ggplot(datos, aes(x, y)) + geom_point(size=3)+ geom_line()
+ggplot(datos, aes(x, y)) + geom_point(size=5, color=’red’)+ geom_line()
+ggplot(datos, aes(x, y)) + geom_point(size=5, color=´red´)+ geom_line()
+ggplot(datos, aes(x, y)) + geom_point(size=5, color=”red”)+ geom_line()
+ggplot(datos, aes(x, y)) + geom_point(size=5, color="red")+ geom_line()
+library(ggplot2)#
+# dataset:#
+data=data.frame(value=rnorm(100))#
+#
+# basic histogram#
+p <- ggplot(data, aes(x=value)) + #
+  geom_histogram()
+p
+# Library#
+library(ggplot2)#
+#
+# create a dataset#
+data <- data.frame(#
+  name=c( rep("A",500), rep("B",500), rep("B",500), rep("C",20), rep('D', 100)  ),#
+  value=c( rnorm(500, 10, 5), rnorm(500, 13, 1), rnorm(500, 18, 1), rnorm(20, 25, 4), rnorm(100, 12, 1) )#
+)#
+#
+# Most basic violin chart#
+p <- ggplot(data, aes(x=name, y=value, fill=name)) + # fill=name allow to automatically dedicate a color for each group#
+  geom_violin()#
+#
+#p
+p
+library(ggplot2)#
+library(dplyr)#
+library(hrbrthemes)#
+#
+# Build dataset with different distributions#
+data <- data.frame(#
+  type = c( rep("variable 1", 1000), rep("variable 2", 1000) ),#
+  value = c( rnorm(1000), rnorm(1000, mean=4) )#
+)#
+#
+# Represent it#
+p <- data %>%#
+  ggplot( aes(x=value, fill=type)) +#
+    geom_histogram( color="#e9ecef", alpha=0.6, position = 'identity') +#
+    scale_fill_manual(values=c("#69b3a2", "#404080")) +#
+    theme_ipsum() +#
+    labs(fill="")
+library(ggplot2)#
+library(dplyr)#
+library(hrbrthemes)#
+#
+# Build dataset with different distributions#
+data <- data.frame(#
+  type = c( rep("variable 1", 1000), rep("variable 2", 1000) ),#
+  value = c( rnorm(1000), rnorm(1000, mean=4) )#
+)#
+#
+# Represent it#
+p <- data %>%#
+  ggplot( aes(x=value, fill=type)) +#
+    geom_histogram( color="#e9ecef", alpha=0.6, position = 'identity') +#
+    scale_fill_manual(values=c("#69b3a2", "#404080")) +
+labs(fill="")
+p
+library(ggplot2)#
+# Build dataset with different distributions#
+data <- data.frame(#
+  type = c( rep("variable 1", 1000), rep("variable 2", 1000) ),#
+  value = c( rnorm(1000), rnorm(1000, mean=4) )#
+)#
+#
+# Represent it#
+p <- data %>%#
+  ggplot( aes(x=value, fill=type)) +#
+    geom_histogram( color="#e9ecef", alpha=0.6, position = 'identity') +#
+    scale_fill_manual(values=c("#69b3a2", "#404080")) +#
+    labs(fill="")
+p
+# library#
+library(ggplot2)#
+# Build dataset with different distributions#
+data <- data.frame(#
+  type = c( rep("variable 1", 1000), rep("variable 2", 1000) ),#
+  value = c( rnorm(1000), rnorm(1000, mean=4) )#
+)#
+#
+# Represent it#
+#
+p <-  ggplot(data, aes(x=value, fill=type)) +#
+    geom_histogram( color="#e9ecef", alpha=0.6, position = 'identity') +#
+    scale_fill_manual(values=c("#69b3a2", "#404080")) +#
+    labs(fill="")#
+p
+data
+library(ggplot2)#
+# Build dataset with different distributions#
+data <- data.frame(#
+  type = c( rep("variable 1", 100), rep("variable 2", 100) ),#
+  value = c( rnorm(100), rnorm(100, mean=4) )#
+)
+data
+p <-  ggplot(data, aes(x=value, fill=type)) +#
+    geom_histogram( color="#e9ecef", alpha=0.6, position = 'identity') +#
+    scale_fill_manual(values=c("#69b3a2", "#404080")) +#
+    labs(fill="")
+p
+ggplot(mtcars, aes(x=as.factor(cyl), y=mpg)) + #
+    geom_boxplot(fill="slateblue", alpha=0.2) + #
+    xlab("cyl")
+ggplot(mpg, aes(displ, hwy)) + geom_point(aes(colour = "blue"))
+ggplot(mpg, aes(displ, hwy)) + geom_point(colour = "blue")
+ggplot(mpg, aes(displ, hwy)) + #
+  geom_point() + #
+  geom_smooth()
+ggplot(mpg, aes(hwy)) + geom_histogram()
+ggplot(mpg, aes(hwy)) + geom_freqpoly()
+hist
+?median
+ls
+data <- data.frame(#
+#
+  name=c("A","B","C","D","E") ,  #
+#
+  value=c(3,12,5,18,45)#
+#
+  )
+ggplot(data, aes(x=name, y=value)) + #
+#
+  geom_bar()
+library(ggplot2)#
+# Create data#
+#
+data <- data.frame(#
+#
+  name=c("A","B","C","D","E") ,  #
+#
+  value=c(3,12,5,18,45)#
+#
+  )#
+# Barplot#
+#
+ggplot(data, aes(x=name, y=value)) + #
+#
+  geom_bar(stat = "identity")
+ggplot(data, aes(x=name, y=value)) + geom_bar()
+?geom_bar
+?stat
+?geom_bar
+experiment <- data.frame(site = c("Site1", "Site1", "Site2", "Site2"), date = c("Jan7", "Jan14", "Jan7", "Jan14"), car_count = c(65, 40, 75, 45))#
+ggplot(data = experiment, mapping = aes(x = date, y = car_count, fill = site)) + geom_bar(stat = "identity")
+x
+date
+experiment <- data.frame(site = c("Site1", "Site1", "Site2", "Site2"), date = c("Jan7", "Jan14", "Jan7", "Jan14"), car_count = c(65, 40, 75, 45))
+experiment
+ggplot(data = experiment, mapping = aes(x = date, y = car_count) + geom_bar(stat = "identity")
+q
+ggplot(data = experiment, mapping = aes(x = date, y = car_count)) + geom_bar(stat = "identity")
+ggplot(data = experiment, mapping = aes(x=date, y=car_count, fill=site)) +#
+  geom_bar(stat="identity", position = "dodge)
+q
+ggplot(data = experiment, mapping = aes(x=date, y=car_count, fill=site)) +#
+  geom_bar(stat="identity", position = "dodge)
+q
+ggplot(data = experiment, mapping = aes(x=date, y=car_count, fill=site))
+ggplot(data = experiment, mapping = aes(x=date, y=car_count, fill=site)) + geom_bar(stat="identity", position = "dodge)
+)
+ggplot(data = experiment, mapping = aes(x=date, y=car_count, fill=site)) +#
+  geom_bar(stat="identity", position = "dodge")
+ggplot(data = experiment, mapping = aes(x=date, y=car_count, fill=site)) +#
+  geom_bar(stat="identity", position = "dodge") +#
+  scale_fill_manual(values = c("red", "blue"))
+ggplot(data = experiment, mapping = aes(x=date, y=car_count, fill=site)) +#
+  geom_bar(stat="identity", position = "dodge") +#
+  geom_text(aes(label = car_count), vjust = -0.2, size = 5,#
+            position = position_dodge(0.9)) +#
+  ylim(0, max(experiment$car_count)*1.1)
+diamonds
+dir(diamonds)
+str(diamonds)
+ggplot(diamonds, aes(color, fill = cut)) +#
+geom_bar()
+ggplot(diamonds, aes(color, fill = cut)) +#
+geom_bar(position = "stack", color="black") +#
+scale_fill_manual(values=c("red", "blue", "green", "yellow", "gray70"))
+ggplot(cars, aes(x = speed, y = dist, color = dist)) +#
+  geom_point()
+library(ggplot2)#
+#
+ggplot(cars, aes(x = speed, y = dist)) +#
+  geom_point(size = 3, shape = 17)
+df <- iris[1:4]
+df
+df <- iris[,1:4]
+df
+reduced
+data
+data()
+HairEyeColor
+? HairEyeColor
+data()
+AirPassengers
+?AirPassengers
+data()
+BJsales
+?BJsales
+op <- options(contrasts = c("contr.helmert", "contr.poly"))#
+( npk.aov <- aov(yield ~ block + N*P*K, npk) )#
+summary(npk.aov)#
+coefficients(npk.aov)
+yield
+block
+yield
+library(boot)
+yield
+?write.csv
+mydata1 <- subset(iris, Species == "setosa", select = c(Sepal.Length, Sepal.Width))
+mydata1
+mydata2 <- subset(iris, Species == "virginica", select = c(Sepal.Length, Sepal.Width))
+mydata1$g <- "a"#
+mydata2$g <- "b"
+mydata <- rbind(mydata1, mydata2)
+mydata
+library(lme4)
+data("anchoring")
+library(sdamr)
+install.packages('sdamr')
+library(sdamr)
+data("anchoring")
+anchoring$anchor <- factor(anchoring$anchor)#
+contrasts(anchoring$anchor) <- c(1/2, -1/2) # alphabetical order, so high before low#
+# define a lmer#
+mod <- lme4::lmer(everest_feet ~ anchor + (1|referrer), data=anchoring)#
+summary(mod)
+everest_feet
+anchoring
+str(anchoring)
+? anchoring
+table(Numerical judgments of the height of the Mount Everest after a low or high anchor. This dataset comes from the ManyLabs 1 st)
+table(anchoring$referrer)
+anchoring
+str(anchoring)
+table(referrer)
+table(anchoring$referrer)
+mod <- lme4::lmer(everest_feet ~ anchor + (1|referrer), data=anchoring)#
+summary(mod)
+residuals(mod)
+predicted(mod)
+predict(mod)
+ggplot(data = mtcars) + #
+  geom_point(aes(mpg, qsec, colour = factor(am))) +#
+  facet_grid(~vs)
+library(ggplot2)#
+#
+ggplot(data = mtcars) + #
+  geom_point(aes(mpg, qsec, colour = factor(am))) +#
+  facet_grid(~vs)
+ggplot(data = mtcars) + geom_histogram(aes(x=qsec))
+100/40
+100/160
+source('p10_31.R')

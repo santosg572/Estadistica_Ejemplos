@@ -1,0 +1,370 @@
+q
+ggplot(data = experiment, mapping = aes(x=date, y=car_count, fill=site)) +#
+  geom_bar(stat="identity", position = "dodge)
+q
+ggplot(data = experiment, mapping = aes(x=date, y=car_count, fill=site))
+ggplot(data = experiment, mapping = aes(x=date, y=car_count, fill=site)) + geom_bar(stat="identity", position = "dodge)
+)
+ggplot(data = experiment, mapping = aes(x=date, y=car_count, fill=site)) +#
+  geom_bar(stat="identity", position = "dodge")
+ggplot(data = experiment, mapping = aes(x=date, y=car_count, fill=site)) +#
+  geom_bar(stat="identity", position = "dodge") +#
+  scale_fill_manual(values = c("red", "blue"))
+ggplot(data = experiment, mapping = aes(x=date, y=car_count, fill=site)) +#
+  geom_bar(stat="identity", position = "dodge") +#
+  geom_text(aes(label = car_count), vjust = -0.2, size = 5,#
+            position = position_dodge(0.9)) +#
+  ylim(0, max(experiment$car_count)*1.1)
+diamonds
+dir(diamonds)
+str(diamonds)
+ggplot(diamonds, aes(color, fill = cut)) +#
+geom_bar()
+ggplot(diamonds, aes(color, fill = cut)) +#
+geom_bar(position = "stack", color="black") +#
+scale_fill_manual(values=c("red", "blue", "green", "yellow", "gray70"))
+ggplot(cars, aes(x = speed, y = dist, color = dist)) +#
+  geom_point()
+library(ggplot2)#
+#
+ggplot(cars, aes(x = speed, y = dist)) +#
+  geom_point(size = 3, shape = 17)
+df <- iris[1:4]
+df
+df <- iris[,1:4]
+df
+reduced
+data
+data()
+HairEyeColor
+? HairEyeColor
+data()
+AirPassengers
+?AirPassengers
+data()
+BJsales
+?BJsales
+op <- options(contrasts = c("contr.helmert", "contr.poly"))#
+( npk.aov <- aov(yield ~ block + N*P*K, npk) )#
+summary(npk.aov)#
+coefficients(npk.aov)
+yield
+block
+yield
+library(boot)
+yield
+?write.csv
+mydata1 <- subset(iris, Species == "setosa", select = c(Sepal.Length, Sepal.Width))
+mydata1
+mydata2 <- subset(iris, Species == "virginica", select = c(Sepal.Length, Sepal.Width))
+mydata1$g <- "a"#
+mydata2$g <- "b"
+mydata <- rbind(mydata1, mydata2)
+mydata
+library(lme4)
+data("anchoring")
+library(sdamr)
+install.packages('sdamr')
+library(sdamr)
+data("anchoring")
+anchoring$anchor <- factor(anchoring$anchor)#
+contrasts(anchoring$anchor) <- c(1/2, -1/2) # alphabetical order, so high before low#
+# define a lmer#
+mod <- lme4::lmer(everest_feet ~ anchor + (1|referrer), data=anchoring)#
+summary(mod)
+everest_feet
+anchoring
+str(anchoring)
+? anchoring
+table(Numerical judgments of the height of the Mount Everest after a low or high anchor. This dataset comes from the ManyLabs 1 st)
+table(anchoring$referrer)
+anchoring
+str(anchoring)
+table(referrer)
+table(anchoring$referrer)
+mod <- lme4::lmer(everest_feet ~ anchor + (1|referrer), data=anchoring)#
+summary(mod)
+residuals(mod)
+predicted(mod)
+predict(mod)
+ggplot(data = mtcars) + #
+  geom_point(aes(mpg, qsec, colour = factor(am))) +#
+  facet_grid(~vs)
+library(ggplot2)#
+#
+ggplot(data = mtcars) + #
+  geom_point(aes(mpg, qsec, colour = factor(am))) +#
+  facet_grid(~vs)
+ggplot(data = mtcars) + geom_histogram(aes(x=qsec))
+100/40
+100/160
+dir()
+source('p1.R')
+source('p1.R')
+source('p1.R')
+x1
+x1
+source('p1.R')
+source('p1.R')
+source('p1.R')
+source('p1.R')
+source('p1.R')
+m1
+m1
+source('p1.R')
+n1
+VEN
+!is.na(VEN)
+!is.na(VEN)
+source('p1.R')
+source('p1.R')
+source('p1.R')
+source('p1.R')
+source('p1.R')
+?plot
+source('p1.R')
+source('p1.R')
+source('p1.R')
+source('p1.R')
+source('p1.R')
+source('p1.R')
+source('p1.R')
+source('p1.R')
+yl
+yl
+source('p1.R')
+yl
+source('p1.R')
+source('p1.R')
+n
+source('p1.R')
+source('p1.R')
+source('p1.R')
+source('p1.R')
+yl[|]
+yl[1]
+source('p1.R')
+yl[1]
+m2[1]
+m1[1]
+source('p1.R')
+(yl[[1]]-me[1])^2
+source('p1.R')
+source('p1.R')
+source('p1.R')
+source('p1.R')
+ff
+n
+rep(0:4, n)
+rep(1:4, n)
+source('p1.R')
+source('p1.R')
+source('p1.R')
+rm(list=ls())#
+#
+datos = read.csv("EXA_C08_S02_01.csv", header=T)#
+#
+Graf <- function(y1=0, del1=0){#
+	n1 = length(y1)#
+	x1 = (1:n1)+del1#
+	m1 = mean(y1)#
+	points(x1, y1, pch=16)#
+	points(c(0,n1)+del1, c(m1,m1), type='l', lwd=3)#
+}#
+#
+print(names(datos))#
+#
+attach(datos)#
+#
+y1 = NRB[!is.na(NRB)]#
+y2 = RRB[!is.na(RRB)]#
+y3 = SQU[!is.na(SQU)]#
+y4 = VEN[!is.na(VEN)]#
+#
+ylista = list(y1, y2, y3, y4)#
+np = sapply(ylista, length)#
+media = sapply(ylista, media)#
+#
+plot(1:np[1], y1, xlim=c(0, 200), ylim=c(-100, 200), pch=16)#
+points(c(0,np[1]), c(media[1], media[1]), type='l', lwd=3)
+rm(list=ls())#
+#
+datos = read.csv("EXA_C08_S02_01.csv", header=T)#
+#
+Graf <- function(y1=0, del1=0){#
+	n1 = length(y1)#
+	x1 = (1:n1)+del1#
+	m1 = mean(y1)#
+	points(x1, y1, pch=16)#
+	points(c(0,n1)+del1, c(m1,m1), type='l', lwd=3)#
+}#
+#
+print(names(datos))#
+#
+attach(datos)#
+#
+y1 = NRB[!is.na(NRB)]#
+y2 = RRB[!is.na(RRB)]#
+y3 = SQU[!is.na(SQU)]#
+y4 = VEN[!is.na(VEN)]#
+#
+ylista = list(y1, y2, y3, y4)#
+np = sapply(ylista, length)#
+media = sapply(ylista, mean)#
+#
+plot(1:np[1], y1, xlim=c(0, 200), ylim=c(-100, 200), pch=16)#
+points(c(0,np[1]), c(media[1], media[1]), type='l', lwd=3)
+rm(list=ls())#
+#
+datos = read.csv("EXA_C08_S02_01.csv", header=T)#
+#
+Graf <- function(y1=0, del1=0){#
+	n1 = length(y1)#
+	x1 = (1:n1)+del1#
+	m1 = mean(y1)#
+	points(x1, y1, pch=16)#
+	points(c(0,n1)+del1, c(m1,m1), type='l', lwd=3)#
+}#
+#
+print(names(datos))#
+#
+attach(datos)#
+#
+y1 = NRB[!is.na(NRB)]#
+y2 = RRB[!is.na(RRB)]#
+y3 = SQU[!is.na(SQU)]#
+y4 = VEN[!is.na(VEN)]#
+#
+ylista = list(y1, y2, y3, y4)#
+np = sapply(ylista, length)#
+media = sapply(ylista, mean)#
+#
+plot(1:np[1], y1, xlim=c(0, 200), ylim=c(-100, 200), pch=16)#
+points(c(0,np[1]), c(media[1], media[1]), type='l', lwd=3)#
+#
+Graf(y2, 40)#
+#
+Graf(y3, 80)#
+#
+Graf(y4, 150)
+ylista
+ylista - (1,2,3)
+source('p1.R')
+source('p1.R')
+source('p1.R')
+source('p1.R')
+source('p1.R')
+y1
+y2
+y3
+y4
+y1
+y2
+np
+RRB
+dir()
+source('p1.R')
+np
+media
+source('p1.R')
+dir()
+np
+media
+source('p1.R')
+source('p1.R')
+source('p1.R')
+?boxplot
+source('p1.R')
+source('p1.R')
+source('p1.R')
+source('p1.R')
+source('p1.R')
+?text
+source('p1.R')
+source('p1.R')
+source('p1.R')
+source('p1.R')
+source('p1.R')
+source('p1.R')
+source('p1.R')
+source('p1.R')
+source('p1.R')
+source('p1.R')
+source('p1.R')
+source('p1.R')
+source('p1.R')
+grupo = rep(1:5, each=5)
+grupo
+rep(1:5, 5)
+source('p831.R')
+me
+grupo
+source('p831.R')
+source('p831.R')
+me
+grupo
+source('p831.R')
+source('p831.R')
+dir()
+source('p841.R')
+source('p841.R')
+source('p841.R')
+source('p841.R')
+source('p841.R')
+source('p841.R')
+source('p841.R')
+rm(list=ls())#
+#
+datos = read.csv("EXA_C08_S04_01.csv" , header=T)#
+#
+print(names(datos))#
+#
+attach(datos)
+FUNC
+source('p841.R')
+source('p841.R')
+source('p841.R')
+source('p841.R')
+source('p841.R')
+source('p841.R')
+library(ggplot2)
+?ggplot
+source('g1.R')
+source('g1.R')
+?geom_point
+source('g1.R')
+source('g1.R')
+source('g1.R')
+source('g1.R')
+source('g1.R')
+source('g1.R')
+source('g1.R')
+str(mpg)
+source('g1.R')
+source('g1.R')
+source('g1.R')
+source('g1.R')
+source('g1.R')
+source('g1.R')
+source('g1.R')
+source('g1.R')
+source('g1.R')
+source('g1.R')
+source('g1.R')
+source('g1.R')
+source('g1.R')
+source('g1.R')
+source('g1.R')
+source('g1.R')
+displ
+mpg$displ
+mpg$displ
+source('g1.R')
+source('g1.R')
+source('g1.R')
+source('g1.R')
+source('g1.R')
+source('g1.R')
+source('g1.R')
+source('g1.R')
+source('g1.R')
