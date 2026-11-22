@@ -128,6 +128,67 @@
 </pre></div>
 </div>
 <p><strong>Tabla ANOVA resultante</strong></p>
+<table class="docutils align-default" id="id2">
+<caption><span class="caption-text">Título de la tabla</span><a class="headerlink" href="#id2" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 30.8%" />
+<col style="width: 7.7%" />
+<col style="width: 15.4%" />
+<col style="width: 15.4%" />
+<col style="width: 15.4%" />
+<col style="width: 15.4%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Fuente</p></th>
+<th class="head"><p>gl</p></th>
+<th class="head"><p>SC</p></th>
+<th class="head"><p>CM</p></th>
+<th class="head"><p>F</p></th>
+<th class="head"><p>p</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Error: sujeto</p></td>
+<td><p>5</p></td>
+<td><p>1038.94</p></td>
+<td><p>207.79</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Error: sujeto:tiempo (tiempo)</p></td>
+<td><p>2</p></td>
+<td><p>850.78</p></td>
+<td><p>425.39</p></td>
+<td><p>497.21</p></td>
+<td><p>&lt; 0.001</p></td>
+</tr>
+<tr class="row-even"><td><p>Residuales (sujeto:tiempo)</p></td>
+<td><p>10</p></td>
+<td><p>8.56</p></td>
+<td><p>0.86</p></td>
+<td><p>—</p></td>
+<td><p>—</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Interpretación clave</strong></p>
+<ul class="simple">
+<li><p><strong>Efecto del tiempo:</strong> Como F(2, 10) = 497.21 y p &lt; 0.001, se rechaza <span class="math notranslate nohighlight">\(H_{0}\)</span>: la presión arterial cambia significativamente a lo largo del tiempo.</p></li>
+<li><p><strong>Aislamiento del sujeto:</strong> El estrato Error: sujeto separa la variabilidad entre pacientes del error residual, aumentando la potencia de la prueba.</p></li>
+<li><p><strong>Supuestos y limitaciones de aov()</strong>: Se asume normalidad y esfericidad (igualdad de varianzas de las diferencias entre pares de condiciones). aov() no calcula la prueba de Mauchly ni correcciones como Greenhouse-Geisser; para ello, revisa la guía de ANOVA de medidas repetidas en R o el tutorial de ANOVA de una vía de medidas repetidas</p></li>
+</ul>
+<p>Si quieres avanzar, indícame si necesitas:</p>
+<ul class="simple">
+<li><p>Revisar supuestos (prueba de Mauchly, corrección Greenhouse-Geisser o alternativa no paramétrica de Friedman)</p></li>
+<li><p>Añadir un factor entre grupos (ANOVA mixto, por ejemplo, comparar dos tipos de dieta a lo largo del tiempo)</p></li>
+<li><p>Analizar tus propios datos compartiendo variables o estructura</p></li>
+</ul>
 </section>
 
 

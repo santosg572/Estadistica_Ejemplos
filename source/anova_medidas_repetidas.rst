@@ -98,7 +98,7 @@ Se mide la presión arterial sistólica (mmHg) en 6 pacientes en tres momentos: 
      - 5	
      - 1038.94	
      - 207.79	
-     — —
+     - -
      - -
    * - Error: sujeto:tiempo (tiempo)	
      - 2	
@@ -113,4 +113,19 @@ Se mide la presión arterial sistólica (mmHg) en 6 pacientes en tres momentos: 
      - —	
      - —
 
+**Interpretación clave**
+
+* **Efecto del tiempo:** Como F(2, 10) = 497.21 y p < 0.001, se rechaza :math:`H_{0}`: la presión arterial cambia significativamente a lo largo del tiempo.
+
+* **Aislamiento del sujeto:** El estrato Error: sujeto separa la variabilidad entre pacientes del error residual, aumentando la potencia de la prueba.
+
+* **Supuestos y limitaciones de aov()**: Se asume normalidad y esfericidad (igualdad de varianzas de las diferencias entre pares de condiciones). aov() no calcula la prueba de Mauchly ni correcciones como Greenhouse-Geisser; para ello, revisa la guía de ANOVA de medidas repetidas en R o el tutorial de ANOVA de una vía de medidas repetidas
+
+Si quieres avanzar, indícame si necesitas:
+
+• Revisar supuestos (prueba de Mauchly, corrección Greenhouse-Geisser o alternativa no paramétrica de Friedman)
+
+• Añadir un factor entre grupos (ANOVA mixto, por ejemplo, comparar dos tipos de dieta a lo largo del tiempo)
+
+• Analizar tus propios datos compartiendo variables o estructura
 

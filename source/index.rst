@@ -16,4 +16,5 @@ documentation for details.
    :caption: Contents:
 
    anova_medidas_repetidas
+   medidas_repetidas_modelos_mezclados
 
