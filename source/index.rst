@@ -17,4 +17,5 @@ documentation for details.
 
    anova_medidas_repetidas
    medidas_repetidas_modelos_mezclados
+   ejemplo01
 

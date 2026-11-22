@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+
+<html lang="sp" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>ejemplo completo y reproducible en R &#8212; документација Estadística 01</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=27fed22d" />
+    <script src="_static/documentation_options.js?v=cb95fe6c"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Индекс" href="genindex.html" />
+    <link rel="search" title="Претрага" href="search.html" />
+    <link rel="prev" title="medidas repetidas en modelos mezclados" href="medidas_repetidas_modelos_mezclados.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="ejemplo-completo-y-reproducible-en-r">
+<h1>ejemplo completo y reproducible en R<a class="headerlink" href="#ejemplo-completo-y-reproducible-en-r" title="Link to this heading">¶</a></h1>
+<p>Aquí tienes un ejemplo completo y reproducible en R que simula datos longitudinales (con algunos datos faltantes), ajusta el modelo mixto con lmerTest (para obtener valores p), realiza comparaciones post-hoc y grafica los resultados.</p>
+<p><strong>1. Instalación y carga de paquetes</strong></p>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="c1"># Instala los paquetes si no los tienes</span>
+<span class="c1"># install.packages(c(&quot;lmerTest&quot;, &quot;emmeans&quot;, &quot;ggplot2&quot;, &quot;dplyr&quot;))</span>
+
+<span class="nf">library</span><span class="p">(</span><span class="n">lmerTest</span><span class="p">)</span><span class="w"> </span><span class="c1"># Ajusta modelos mixtos y calcula valores p</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">emmeans</span><span class="p">)</span><span class="w">  </span><span class="c1"># Medias marginales y comparaciones por pares</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span><span class="w">  </span><span class="c1"># Gráficos</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span><span class="w">    </span><span class="c1"># Manipulación de datos</span>
+</pre></div>
+</div>
+<p><strong>2. Simulación de datos (formato largo)</strong></p>
+<p>Simularemos 30 pacientes (15 en Placebo y 15 con Fármaco A) medidos en 3 tiempos (T0, T1, T2).</p>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">set.seed</span><span class="p">(</span><span class="m">123</span><span class="p">)</span>
+
+<span class="n">n_sujetos</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">30</span>
+<span class="n">tiempos</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;T0&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;T1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;T2&quot;</span><span class="p">)</span>
+
+<span class="c1"># Crear base de datos en formato largo</span>
+<span class="n">datos</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">expand.grid</span><span class="p">(</span>
+<span class="w">  </span><span class="n">id_paciente</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">factor</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="n">n_sujetos</span><span class="p">),</span>
+<span class="w">  </span><span class="n">tiempo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">factor</span><span class="p">(</span><span class="n">tiempos</span><span class="p">,</span><span class="w"> </span><span class="n">levels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;T0&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;T1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;T2&quot;</span><span class="p">))</span>
+<span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">arrange</span><span class="p">(</span><span class="n">id_paciente</span><span class="p">,</span><span class="w"> </span><span class="n">tiempo</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">mutate</span><span class="p">(</span>
+<span class="w">    </span><span class="n">grupo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">factor</span><span class="p">(</span><span class="nf">ifelse</span><span class="p">(</span><span class="nf">as.numeric</span><span class="p">(</span><span class="n">id_paciente</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="m">15</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Placebo&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Farmaco_A&quot;</span><span class="p">),</span>
+<span class="w">                </span><span class="n">levels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;Placebo&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Farmaco_A&quot;</span><span class="p">))</span>
+<span class="w">  </span><span class="p">)</span>
+
+<span class="c1"># Efecto aleatorio por paciente (diferente presión basal en cada persona)</span>
+<span class="n">efecto_sujeto</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rnorm</span><span class="p">(</span><span class="n">n_sujetos</span><span class="p">,</span><span class="w"> </span><span class="n">mean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">sd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">8</span><span class="p">)</span>
+<span class="n">datos</span><span class="o">$</span><span class="n">u0</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">efecto_sujeto</span><span class="p">[</span><span class="nf">as.numeric</span><span class="p">(</span><span class="n">datos</span><span class="o">$</span><span class="n">id_paciente</span><span class="p">)]</span>
+
+<span class="c1"># Generar presión arterial sistólica (PAS) con efecto de interacción</span>
+<span class="n">datos</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">datos</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">mutate</span><span class="p">(</span>
+<span class="w">    </span><span class="n">efecto_fijo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">case_when</span><span class="p">(</span>
+<span class="w">      </span><span class="n">grupo</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Placebo&quot;</span><span class="w">   </span><span class="o">&amp;</span><span class="w"> </span><span class="n">tiempo</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;T0&quot;</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="m">150</span><span class="p">,</span>
+<span class="w">      </span><span class="n">grupo</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Placebo&quot;</span><span class="w">   </span><span class="o">&amp;</span><span class="w"> </span><span class="n">tiempo</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;T1&quot;</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="m">148</span><span class="p">,</span>
+<span class="w">      </span><span class="n">grupo</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Placebo&quot;</span><span class="w">   </span><span class="o">&amp;</span><span class="w"> </span><span class="n">tiempo</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;T2&quot;</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="m">147</span><span class="p">,</span>
+<span class="w">      </span><span class="n">grupo</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Farmaco_A&quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">tiempo</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;T0&quot;</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="m">150</span><span class="p">,</span>
+<span class="w">      </span><span class="n">grupo</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Farmaco_A&quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">tiempo</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;T1&quot;</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="m">138</span><span class="p">,</span>
+<span class="w">      </span><span class="n">grupo</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Farmaco_A&quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">tiempo</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;T2&quot;</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="m">128</span>
+<span class="w">    </span><span class="p">),</span>
+<span class="w">    </span><span class="n">pas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">round</span><span class="p">(</span><span class="n">efecto_fijo</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">u0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">rnorm</span><span class="p">(</span><span class="nf">n</span><span class="p">(),</span><span class="w"> </span><span class="n">mean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">sd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">4</span><span class="p">),</span><span class="w"> </span><span class="m">1</span><span class="p">)</span>
+<span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">select</span><span class="p">(</span><span class="n">id_paciente</span><span class="p">,</span><span class="w"> </span><span class="n">grupo</span><span class="p">,</span><span class="w"> </span><span class="n">tiempo</span><span class="p">,</span><span class="w"> </span><span class="n">pas</span><span class="p">)</span>
+
+<span class="c1"># Simular pérdida de seguimiento (2 datos faltantes en T2)</span>
+<span class="n">datos</span><span class="o">$</span><span class="n">pas</span><span class="p">[</span><span class="nf">c</span><span class="p">(</span><span class="m">6</span><span class="p">,</span><span class="w"> </span><span class="m">87</span><span class="p">)]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kc">NA</span>
+
+<span class="nf">head</span><span class="p">(</span><span class="n">datos</span><span class="p">,</span><span class="w"> </span><span class="m">9</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>3. Ajuste del modelo lineal mixto</strong></p>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="c1"># Modelo con intercepto aleatorio por paciente (1 | id_paciente)</span>
+<span class="n">modelo</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">lmer</span><span class="p">(</span><span class="n">pas</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">grupo</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">tiempo</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="m">1</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">id_paciente</span><span class="p">),</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">datos</span><span class="p">)</span>
+
+<span class="c1"># Resumen de coeficientes (efectos fijos y varianza aleatoria)</span>
+<span class="nf">summary</span><span class="p">(</span><span class="n">modelo</span><span class="p">)</span>
+
+<span class="c1"># Tabla ANOVA tipo III (significancia global de grupo, tiempo e interacción)</span>
+<span class="nf">anova</span><span class="p">(</span><span class="n">modelo</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>4. Comparaciones post-hoc (¿En qué tiempo difieren los grupos?)</strong></p>
+<p>Si la interacción grupo:tiempo es significativa, comparamos los grupos dentro de cada momento:</p>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="c1"># Comparar Placebo vs Farmaco_A dentro de cada tiempo</span>
+<span class="n">medias_marg</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">emmeans</span><span class="p">(</span><span class="n">modelo</span><span class="p">,</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">grupo</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">tiempo</span><span class="p">)</span>
+<span class="nf">pairs</span><span class="p">(</span><span class="n">medias_marg</span><span class="p">,</span><span class="w"> </span><span class="n">adjust</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;tukey&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>5. Visualización de trayectorias individuales y medias</strong></p>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">ggplot</span><span class="p">(</span><span class="n">datos</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tiempo</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pas</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">grupo</span><span class="p">,</span><span class="w"> </span><span class="n">group</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">id_paciente</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_line</span><span class="p">(</span><span class="n">alpha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.25</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="c1"># Trayectorias individuales</span>
+<span class="w">  </span><span class="nf">stat_summary</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">group</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">grupo</span><span class="p">),</span><span class="w"> </span><span class="n">fun</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mean</span><span class="p">,</span><span class="w"> </span><span class="n">geom</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;line&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">linewidth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1.3</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">stat_summary</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">group</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">grupo</span><span class="p">),</span><span class="w"> </span><span class="n">fun</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mean</span><span class="p">,</span><span class="w"> </span><span class="n">geom</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;point&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">labs</span><span class="p">(</span>
+<span class="w">    </span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Evolución de la Presión Arterial Sistólica (PAS)&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">subtitle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Líneas tenues: pacientes individuales | Líneas gruesas: media por grupo&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Tiempo de medición&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;PAS (mmHg)&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Tratamiento&quot;</span>
+<span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">theme_minimal</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Si quieres adaptar el script a tu análisis, indícame:</p>
+<ul class="simple">
+<li><p>Si necesitas incluir pendientes aleatorias (por ejemplo, (tiempo | id_paciente))</p></li>
+<li><p>Si tus datos tienen estructuras de correlación específicas (como AR1 con el paquete nlme)</p></li>
+<li><p>Cómo interpretar una salida específica de summary() o anova()</p></li>
+</ul>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Estadística</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Тражи" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Навигација</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="anova_medidas_repetidas.html">ANOVA de medidas repetidas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="medidas_repetidas_modelos_mezclados.html">medidas repetidas en modelos mezclados</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">ejemplo completo y reproducible en R</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="medidas_repetidas_modelos_mezclados.html" title="претходна глава">medidas repetidas en modelos mezclados</a></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2026, Leopoldo.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.2.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="_sources/ejemplo01.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
